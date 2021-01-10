@@ -8,6 +8,7 @@ TagManager:
   - Laser
   - Missle
   - PlayerTarget
+  - PowerUp
   layers:
   - Default
   - TransparentFX

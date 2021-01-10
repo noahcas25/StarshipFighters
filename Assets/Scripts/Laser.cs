@@ -9,7 +9,7 @@ public class Laser : MonoBehaviour
         if(other.CompareTag("Enemy")) {
              other.GetComponentInParent<EnemyTracker>().SetHealth(-1);
              Destroy(this.gameObject);
-             Debug.Log("hit");
+            //  Debug.Log("hit");
         }
     }
 }
