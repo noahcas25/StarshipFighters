@@ -8,10 +8,7 @@ public class AttackActivatorScript : MonoBehaviour
     {
         if(other.CompareTag("Enemy")) {
                other.GetComponentInParent<EnemyTracker>().setPassedWall(true);
-               Debug.Log("This is working");
         }
-
-        // Debug.Log("This is working but not right");
     }
 }
 

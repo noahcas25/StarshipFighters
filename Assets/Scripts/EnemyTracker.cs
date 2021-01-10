@@ -12,11 +12,13 @@ public class EnemyTracker : MonoBehaviour
 
     private bool passedWall = false;
     private int count = 0;
+    private bool powerUpTrigger = true;
     private int laserSpeed = 10;
     private bool canFire = true;
     private int currentHealth;
     private GameObject player;
     private GameObject missle;
+    private GameObject powerUp;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class EnemyTracker : MonoBehaviour
         transform.GetChild(1).GetComponent<ParticleSystem>().Pause();
         player = GameObject.FindWithTag("Player");
         missle = GameObject.FindWithTag("Missle");
+        powerUp = GameObject.FindWithTag("PowerUp");
     }
 
     // Update is called once per frame
@@ -87,6 +90,15 @@ public class EnemyTracker : MonoBehaviour
         if(currentHealth <= 0)
         {
             transform.GetChild(1).GetComponent<ParticleSystem>().Play();
+            
+            int rand = Random.Range(1, 4);
+            
+            if(rand == 3 && powerUpTrigger) {
+                GameObject powerUpClone = Instantiate(powerUp, transform.position, transform.rotation);
+                powerUpClone.transform.GetComponent<Rigidbody>().velocity = transform.forward * 10;
+            }
+            
+            powerUpTrigger = false;
             Destroy(this.gameObject, 0.5f); 
         }
     }
