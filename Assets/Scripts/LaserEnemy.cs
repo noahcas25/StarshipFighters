@@ -9,7 +9,7 @@ public class LaserEnemy : MonoBehaviour
         if(other.CompareTag("PlayerTarget")) 
         {   if(other.GetComponentInParent<PlayerController>().GetCanTakeDamage())
                 other.GetComponentInParent<PlayerController>().SetHealth(-1);
-                Destroy(this.gameObject);
+                Destroy(transform.parent.gameObject);
         }
     }
 }

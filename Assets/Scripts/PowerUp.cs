@@ -16,9 +16,9 @@ public class PowerUp : MonoBehaviour
         player = GameObject.FindWithTag("Player");
     }
 
-    private void Update()
+    void Update()
     {
-        transform.Rotate(new Vector3(0, 45, 0) * Time.deltaTime);
+       transform.Rotate(new Vector3(0, 0, 2) * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,44 +34,52 @@ public class PowerUp : MonoBehaviour
             switch(rand) 
             {
                 case 1:
-                //   player.GetComponent<PlayerController>().currentPowerUp = "Heart";
-                //   if(player.GetComponent<PlayerControl>().health <= 5)
-                //      player.GetComponent<PlayerControl>().health += 3;
-                //   else
-                //      player.GetComponent<PlayerControl>().health = 8;
-                //      Destroy(this.gameObject, 3);
-
-                Debug.Log("Chill Foo");
+                    player.GetComponent<PlayerController>().currentHealth = 10;
+                    Debug.Log("1");
                 break;
 
                 case 2:
-                //   player.GetComponent<PlayerControl>().currentPowerUp = "Speed";
-                  StartCoroutine(powerUpTimerSpeed());
+                    StartCoroutine(powerUpTimerShield());
+                     Debug.Log("2");
                 break;
 
                 case 3:
-                //   player.GetComponent<PlayerControl>().currentPowerUp = "Damage";
-                  StartCoroutine(powerUpTimerFireRate());
+                    StartCoroutine(powerUpTimerFireRate());
+                     Debug.Log("3");
                 break; 
             }
             
             GetComponent<MeshRenderer>().enabled = false;
+            transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+            transform.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
+            
             Destroy(this.gameObject, 11);
         }
+
+        
     }
 
     private IEnumerator powerUpTimerSpeed() 
     {
-         player.GetComponent<PlayerController>().movementSpeed = 10;
-         yield return new WaitForSeconds(powerUpTime);
-         player.GetComponent<PlayerController>().movementSpeed = 10;
+        player.GetComponent<PlayerController>().movementSpeed = 10;
+        yield return new WaitForSeconds(powerUpTime);
+        player.GetComponent<PlayerController>().movementSpeed = 8;
+    }
+
+    private IEnumerator powerUpTimerShield() 
+    {
+        player.GetComponent<PlayerController>().canTakeDamage = false;
+        player.transform.GetChild(3).transform.localPosition = new Vector3(0, 0, 0);
+        yield return new WaitForSeconds(powerUpTime);
+        player.GetComponent<PlayerController>().canTakeDamage = true;
+        player.transform.GetChild(3).transform.localPosition = new Vector3(100, 100, 100);
     }
 
     private IEnumerator powerUpTimerFireRate() 
     {
         player.GetComponent<PlayerController>().fireRate = 0.1f;
         yield return new WaitForSeconds(powerUpTime);
-        player.GetComponent<PlayerController>().fireRate = 0.1f;
+        player.GetComponent<PlayerController>().fireRate = 0.15f;
     }
 
     private IEnumerator powerUpDelay() 

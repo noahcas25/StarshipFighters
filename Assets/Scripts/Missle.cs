@@ -6,7 +6,7 @@ public class Missle : MonoBehaviour
 {
 
     private GameObject player;
-    private int speed = 3;
+    private int speed = 2;
 
     void Start() 
     {
