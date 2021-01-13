@@ -13,7 +13,7 @@ public class EnemyTracker : MonoBehaviour
     private bool passedWall = false;
     private int count = 0;
     private bool powerUpTrigger = true;
-    private int laserSpeed = 10;
+    private int laserSpeed = 12;
     private bool canFire = true;
     private int currentHealth;
     private GameObject player;
@@ -36,7 +36,7 @@ public class EnemyTracker : MonoBehaviour
     {
         if(tracker) {
             transform.LookAt(player.transform);
-            transform.position += transform.forward * speed * Time.deltaTime;
+            transform.position += transform.forward * speed * Time.deltaTime/2;
         }
         else{
              transform.position += transform.forward * speed * Time.deltaTime/3;
@@ -76,7 +76,7 @@ public class EnemyTracker : MonoBehaviour
     public IEnumerator AttackDelay() 
     {
         canFire = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         canFire = true;
     }
     
@@ -95,7 +95,7 @@ public class EnemyTracker : MonoBehaviour
             
             if(rand == 3 && powerUpTrigger) {
                 GameObject powerUpClone = Instantiate(powerUp, transform.position, transform.rotation);
-                powerUpClone.transform.GetComponent<Rigidbody>().velocity = transform.forward * 10;
+                powerUpClone.transform.GetComponent<Rigidbody>().velocity = transform.forward * 3;
             }
             
             powerUpTrigger = false;

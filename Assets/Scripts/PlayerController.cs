@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     private int initialHealth = 10;
     public int currentHealth;
-    private bool canTakeDamage = true;
+    public bool canTakeDamage = true;
 
     public float flightSpeed;
     public float movementSpeed;
