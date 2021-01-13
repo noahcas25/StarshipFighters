@@ -29,7 +29,7 @@ public class PowerUp : MonoBehaviour
 
             StartCoroutine(powerUpDelay());
 
-            int rand = 2;
+            int rand = Random.Range(1, 4);
 
             switch(rand) 
             {
