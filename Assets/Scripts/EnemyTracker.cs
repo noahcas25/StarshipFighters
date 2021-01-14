@@ -89,6 +89,7 @@ public class EnemyTracker : MonoBehaviour
         
         if(currentHealth <= 0)
         {
+            canFire = false;
             transform.GetChild(1).GetComponent<ParticleSystem>().Play();
             
             int rand = Random.Range(1, 4);
