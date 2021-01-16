@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
         if(input.y == 0)
             angleY = 0;
 
-         transform.position += new Vector3(input.x * movementSpeed * Time.deltaTime, input.y * movementSpeed * Time.deltaTime, 0);
+        transform.position+= new Vector3(input.x * movementSpeed * Time.deltaTime, input.y * movementSpeed * Time.deltaTime, 0);
     }
 
     void Movement()
