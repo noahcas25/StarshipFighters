@@ -57,6 +57,12 @@ public class EnemyTracker : MonoBehaviour
 
         if(passedWall) 
         {
+            // if(!tracker & transform.childCount == 2)
+            // {
+            //     GameObject Missle = Instantiate(missle, transform.position, transform.rotation);
+            //     Missle.transform.SetParent(transform, true);
+            // }
+
             if(transform.childCount < 3 & !tracker) 
             {
                 GameObject Missle = Instantiate(missle, transform.position, transform.rotation);

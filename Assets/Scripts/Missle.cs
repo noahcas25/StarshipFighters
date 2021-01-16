@@ -7,6 +7,7 @@ public class Missle : MonoBehaviour
 
     private GameObject player;
     private int speed = 2;
+    private int counter = 0;
 
     void Start() 
     {
@@ -21,6 +22,9 @@ public class Missle : MonoBehaviour
        
        transform.position += transform.forward * speed * Time.deltaTime;
        transform.Rotate(new Vector3(0, 0, 2) * Time.deltaTime);
+
+    //    transform.GetChild(2).GetComponent<Light>().intensity = 0;
+
     }
 
     public void setExplosion()
@@ -36,4 +40,11 @@ public class Missle : MonoBehaviour
              Destroy(this.gameObject, 0.5f);
         }
     }
+
+    // private IEnumerator blinker() 
+    // {
+       
+    //     yield return new WaitForSeconds(1f);
+        
+    // }
 }
