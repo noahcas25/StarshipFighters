@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     public int laserSpeed = 40;
     public float fireRate = 0.15f;
     public GameObject laser;
+    public AudioClip death;
+    public AudioClip shooting;
+    public AudioSource audioSwitcher;
 
     private bool canShoot = true;
     private float angleX = 0;
